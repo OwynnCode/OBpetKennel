@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-// TODO: Destructure the props you need here (header, image, etc.)
-class ChildComponent extends React.Component {
+class ChildComponent extends Component {
+  render() {
+    const { id, name, image, status, onAction } = this.props;
 
-  constructor(props) {
-   // todo add bindings etc to inititalize component and funcs 
-   super(props);
+    return (
+      <div 
+        className="child-card"
+        style={{
+          border: "2px solid #ccc",
+          borderRadius: "10px",
+          padding: "15px",
+          textAlign: "center",
+          width: "200px"
+        }}
+      >
+        <h2>{name}</h2>
+
+        <img 
+          src={image} 
+          alt={name} 
+          style={{ width: "100px", height: "100px", objectFit: "cover" }}
+        />
+
+        <p>{status}</p>
+
+        <button 
+          onClick={() => onAction(id)}
+          style={{
+            marginTop: "10px",
+            padding: "8px 12px",
+            cursor: "pointer"
+          }}
+        >
+          Feed
+        </button>
+      </div>
+    );
   }
-  
-  render(){
-   return (
-    <div className="child-card">
-      {/* TODO: 
-        1. Add an <h2> for the header text 
-        2. Add an <img> tag for the image
-        3. Add a <p> tag for the content
-        4. Add a <button> that fires the click event
-      */}
-      
-      <button>Click Me</button>
-    </div>
-  );
- }
 }
 
 export default ChildComponent;
